@@ -9,6 +9,6 @@ class Application extends Thread {
             isValid = new InputValidator(commands).validate();
         } while (!isValid);
 
-        new WordPusher(commands).pushWWord();
+        new WordPusher(commands).pushWord();
     }
 }
