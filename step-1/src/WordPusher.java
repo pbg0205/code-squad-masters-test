@@ -13,32 +13,51 @@ public class WordPusher {
         this.direction = commands[2];
     }
 
-    public void pushWWord() {
-        if(!isPositiveNumberOrZero()){
+    public void pushWord() {
+        if(isMinusNumber()){
             number = -number;
+            changeDirection();
         }
-        process();
+        resizeNumberLen();
+        swapByDirection();
         System.out.println(word);
     }
 
-    private boolean isPositiveNumberOrZero() {
-        return (number >= 0);
+    private boolean isMinusNumber() {
+        return (number < 0);
     }
 
-    private void process() {
+    private void changeDirection() {
+        if(direction.equalsIgnoreCase("L")){
+            direction = "R";
+        }
+        if(direction.equalsIgnoreCase("R")){
+            direction = "L";
+        }
+    }
+
+    private void resizeNumberLen() {
         if(isGreaterThanWordLen()){
             number = number % word.length();
         }
-        swapWord();
     }
 
     private boolean isGreaterThanWordLen() {
         return word.length() < number;
     }
 
-    private void swapWord() {
-        String leftWord = word.substring(0, number);
-        String rightWord = word.substring(number);
+    private void swapByDirection() {
+        if(direction.equalsIgnoreCase("L")){
+            swapWord(number);
+        }
+        if(direction.equalsIgnoreCase("R")){
+            swapWord(word.length() - number);
+        }
+    }
+
+    private void swapWord(int index) {
+        String leftWord = word.substring(0, index);
+        String rightWord = word.substring(index);
         word = rightWord + leftWord;
     }
 }
