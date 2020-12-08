@@ -10,6 +10,7 @@ class Application extends Thread {
     @Override
     public void run() {
         List<Command> commandList;
+        System.out.println(cube);
         while(true) {
             commandList = CommandsSeperator.makeCommands(InputView.inputValues());
             cube.move(commandList);
