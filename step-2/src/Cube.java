@@ -114,6 +114,7 @@ public class Cube {
     }
 
     private void quit() {
+        System.out.println("Bye~");
         System.exit(0);
     }
 
