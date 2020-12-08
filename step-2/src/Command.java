@@ -1,4 +1,4 @@
-public enum  Command {
+public enum Command {
     TOP_LEFT("U"),
     TOP_RIGHT("U'"),
     RIGHT_UPPER("R"),
@@ -17,5 +17,14 @@ public enum  Command {
 
     public String getValue() {
         return value;
+    }
+
+    public static Command of(String value) {
+        for (Command command : Command.values()) {
+            if(command.getValue().equals(value)) {
+                return command;
+            }
+        }
+        return null;
     }
 }
