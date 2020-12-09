@@ -6,11 +6,13 @@ class Cube {
     private static final int FACE_NUMBER = 6;
     private static final int CUBE_SIZE = 3;
 
+    private OperationCounter operationCounter;
     private String[][][] cube;
 
     public Cube() {
         initCube();
         initCubeFaces();
+        initOperationCounter();
     }
 
     private void initCube() {
@@ -22,6 +24,10 @@ class Cube {
         for (CubeColor color : CubeColor.values()) {
             initCubeFace(faceNumber++, color);
         }
+    }
+
+    private void initOperationCounter() {
+        this.operationCounter = new OperationCounter();
     }
 
     private void initCubeFace(int faceNumber, CubeColor color) {
@@ -47,50 +53,62 @@ class Cube {
             case UPPER_LEFT:
                 RotateClockwise(0);
                 rotateUpperLeft();
+                operationCounter.addCount();
                 break;
             case UPPER_RIGHT:
                 RotateAnticlockwise(0);
                 rotateUpperRight();
+                operationCounter.addCount();
                 break;
             case LEFT_BELOW:
                 RotateClockwise(2);
                 rotateLeftBelow();
+                operationCounter.addCount();
                 break;
             case LEFT_UPPER:
                 RotateAnticlockwise(2);
                 rotateLeftUpper();
+                operationCounter.addCount();
                 break;
             case FRONT_RIGHT:
                 RotateClockwise(3);
                 rotateFrontRight();
+                operationCounter.addCount();
                 break;
             case FRONT_LEFT:
                 RotateAnticlockwise(3);
                 rotateFrontLeft();
+                operationCounter.addCount();
                 break;
             case RIGHT_UPPER:
                 RotateClockwise(4);
                 rotateRightUpper();
+                operationCounter.addCount();
                 break;
             case RIGHT_BELOW:
                 RotateAnticlockwise(4);
                 rotateRightBelow();
+                operationCounter.addCount();
                 break;
             case BACK_LEFT:
                 RotateClockwise(1);
                 rotateBackLeft();
+                operationCounter.addCount();
                 break;
             case BACK_RIGHT:
                 RotateAnticlockwise(1);
                 rotateBackRight();
+                operationCounter.addCount();
                 break;
             case DOWN_RIGHT:
                 RotateClockwise(5);
                 rotateDownRight();
+                operationCounter.addCount();
                 break;
             case DOWN_LEFT:
                 RotateAnticlockwise(5);
                 rotateDownLeft();
+                operationCounter.addCount();
                 break;
             case QUIT:
                 quit();
@@ -263,7 +281,8 @@ class Cube {
     }
 
     private void quit() {
-        System.out.println("Bye~");
+        operationCounter.printCount();
+        System.out.println("이용해주셔서 감사합니다. 뚜뚜뚜.");
         System.exit(0);
     }
 
