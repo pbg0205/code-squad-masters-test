@@ -10,7 +10,8 @@ enum Command {
     BACK_LEFT("B"),
     BACK_RIGHT("B'"),
     DOWN_RIGHT("D"),
-    DOWN_LEFT("D'");
+    DOWN_LEFT("D'"),
+    QUIT("Q");
 
     private final String value;
 
