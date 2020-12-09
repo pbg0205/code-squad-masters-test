@@ -1,5 +1,3 @@
-import javafx.scene.transform.Rotate;
-
 import java.util.List;
 
 class Cube {
