@@ -24,10 +24,16 @@ class ValueSeperator {
                 index += 1;
                 continue;
             }
+            if (values.charAt(index + 1) == '2') {
+                command = values.substring(index, index + 2);
+                valuesList.add(command);
+                index += 1;
+                continue;
+            }
+
             command = values.substring(index, index + 1);
             valuesList.add(command);
         }
-
         return valuesList;
     }
 

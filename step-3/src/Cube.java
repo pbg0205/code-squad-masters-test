@@ -58,51 +58,69 @@ class Cube {
     private void rotateByCommand(Command command) {
         switch (command) {
             case UPPER_LEFT:
-                RotateClockwise(0);
+                rotateClockwise(0);
                 rotateUpperLeft();
                 break;
+            case UPPER_LEFT_X2: //TODO 구현하기
+                rotateUpperLeft180();
+                break;
             case UPPER_RIGHT:
-                RotateAnticlockwise(0);
+                rotateAnticlockwise(0);
                 rotateUpperRight();
                 break;
             case LEFT_BELOW:
-                RotateClockwise(2);
+                rotateClockwise(2);
                 rotateLeftBelow();
                 break;
+            case LEFT_BELOW_X2://TODO 구현하기
+                rotateLeftBelow180();
+                break;
             case LEFT_UPPER:
-                RotateAnticlockwise(2);
+                rotateAnticlockwise(2);
                 rotateLeftUpper();
                 break;
             case FRONT_RIGHT:
-                RotateClockwise(3);
+                rotateClockwise(3);
                 rotateFrontRight();
                 break;
+            case FRONT_RIGHT_X2://TODO 구현하기
+                rotateFrontRight180();
+                break;
             case FRONT_LEFT:
-                RotateAnticlockwise(3);
+                rotateAnticlockwise(3);
                 rotateFrontLeft();
                 break;
             case RIGHT_UPPER:
-                RotateClockwise(4);
+                rotateClockwise(4);
                 rotateRightUpper();
                 break;
+            case RIGHT_UPPER_X2: //TODO 구현하기
+                rotateRightUpper180();
+                break;
             case RIGHT_BELOW:
-                RotateAnticlockwise(4);
+                rotateAnticlockwise(4);
                 rotateRightBelow();
                 break;
             case BACK_LEFT:
-                RotateClockwise(1);
+                rotateClockwise(1);
                 rotateBackLeft();
                 break;
+            case BACK_LEFT_X2: //TODO 구현하기
+                rotateBackLeft180();
+                break;
             case BACK_RIGHT:
-                RotateAnticlockwise(1);
+                rotateAnticlockwise(1);
                 rotateBackRight();
                 break;
             case DOWN_RIGHT:
-                RotateClockwise(5);
+                rotateClockwise(5);
                 rotateDownRight();
                 break;
+            case DOWN_RIGHT_X2: //TODO 구현하기
+                rotateDownRight180();
+                break;
             case DOWN_LEFT:
-                RotateAnticlockwise(5);
+                rotateAnticlockwise(5);
                 rotateDownLeft();
                 break;
             case QUIT:
@@ -113,12 +131,42 @@ class Cube {
         printCommandAndStatus(command);
     }
 
+    private void rotateUpperLeft180() {
+        rotateClockwise(0);
+        rotateUpperLeft();
+    }
+
+    private void rotateLeftBelow180() {
+        rotateClockwise(2);
+        rotateLeftBelow();
+    }
+
+    private void rotateFrontRight180() {
+        rotateClockwise(3);
+        rotateFrontRight();
+    }
+
+    private void rotateRightUpper180() {
+        rotateClockwise(4);
+        rotateRightUpper();
+    }
+
+    private void rotateBackLeft180() {
+        rotateClockwise(1);
+        rotateBackLeft();
+    }
+
+    private void rotateDownRight180() {
+        rotateClockwise(5);
+        rotateDownRight();
+    }
+
     private void printCommandAndStatus(Command command) {
         System.out.println("명령어 : " + command.getValue());
         printStatus();
     }
 
-    private void RotateClockwise(int faceNumber) {
+    private void rotateClockwise(int faceNumber) {
         String temp;
 
         temp = cube[faceNumber][2][0];
@@ -134,7 +182,7 @@ class Cube {
         cube[faceNumber][1][0] = temp;
     }
 
-    private void RotateAnticlockwise(int faceNumber) {
+    private void rotateAnticlockwise(int faceNumber) {
         String temp;
 
         temp = cube[faceNumber][0][0];
