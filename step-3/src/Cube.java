@@ -54,67 +54,56 @@ class Cube {
             case UPPER_LEFT:
                 RotateClockwise(0);
                 rotateUpperLeft();
-                operationCounter.addCount();
                 break;
             case UPPER_RIGHT:
                 RotateAnticlockwise(0);
                 rotateUpperRight();
-                operationCounter.addCount();
                 break;
             case LEFT_BELOW:
                 RotateClockwise(2);
                 rotateLeftBelow();
-                operationCounter.addCount();
                 break;
             case LEFT_UPPER:
                 RotateAnticlockwise(2);
                 rotateLeftUpper();
-                operationCounter.addCount();
                 break;
             case FRONT_RIGHT:
                 RotateClockwise(3);
                 rotateFrontRight();
-                operationCounter.addCount();
                 break;
             case FRONT_LEFT:
                 RotateAnticlockwise(3);
                 rotateFrontLeft();
-                operationCounter.addCount();
                 break;
             case RIGHT_UPPER:
                 RotateClockwise(4);
                 rotateRightUpper();
-                operationCounter.addCount();
                 break;
             case RIGHT_BELOW:
                 RotateAnticlockwise(4);
                 rotateRightBelow();
-                operationCounter.addCount();
                 break;
             case BACK_LEFT:
                 RotateClockwise(1);
                 rotateBackLeft();
-                operationCounter.addCount();
                 break;
             case BACK_RIGHT:
                 RotateAnticlockwise(1);
                 rotateBackRight();
-                operationCounter.addCount();
                 break;
             case DOWN_RIGHT:
                 RotateClockwise(5);
                 rotateDownRight();
-                operationCounter.addCount();
                 break;
             case DOWN_LEFT:
                 RotateAnticlockwise(5);
                 rotateDownLeft();
-                operationCounter.addCount();
                 break;
             case QUIT:
                 quit();
                 break;
         }
+        operationCounter.addCount();
         printCommandAndStatus(command);
     }
 
