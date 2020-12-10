@@ -42,6 +42,9 @@ class Cube {
 
     public void rotate(List<Command> commandList) {
         for (Command command : commandList) {
+            if (command.isNull()) {
+                continue;
+            }
             rotateByCommand(command);
         }
     }
@@ -112,6 +115,12 @@ class Cube {
                 quit();
                 break;
         }
+        printCommandAndStatus(command);
+    }
+
+    private void printCommandAndStatus(Command command) {
+        System.out.println("명령어 : " + command.getValue());
+        printStatus();
     }
 
     private void RotateClockwise(int faceNumber) {
@@ -171,8 +180,8 @@ class Cube {
     private void rotateLeftBelow() {
         String temp;
         for (int index = 0; index < CUBE_SIZE; index++) {
-            temp = cube[1][2-index][2];
-            cube[1][2-index][2] = cube[5][index][0];
+            temp = cube[1][2 - index][2];
+            cube[1][2 - index][2] = cube[5][index][0];
             cube[5][index][0] = cube[3][index][0];
             cube[3][index][0] = cube[0][index][0];
             cube[0][index][0] = temp;
@@ -185,17 +194,17 @@ class Cube {
             temp = cube[0][index][0];
             cube[0][index][0] = cube[3][index][0];
             cube[3][index][0] = cube[5][index][0];
-            cube[5][index][0] = cube[1][2-index][2];
-            cube[1][2-index][2] = temp;
+            cube[5][index][0] = cube[1][2 - index][2];
+            cube[1][2 - index][2] = temp;
         }
     }
 
     private void rotateFrontRight() {
         String temp;
         for (int index = 0; index < CUBE_SIZE; index++) {
-            temp = cube[2][2-index][2];
-            cube[2][2-index][2] = cube[5][0][2-index];
-            cube[5][0][2-index] = cube[4][index][0];
+            temp = cube[2][2 - index][2];
+            cube[2][2 - index][2] = cube[5][0][2 - index];
+            cube[5][0][2 - index] = cube[4][index][0];
             cube[4][index][0] = cube[0][2][index];
             cube[0][2][index] = temp;
         }
@@ -206,9 +215,9 @@ class Cube {
         for (int index = 0; index < CUBE_SIZE; index++) {
             temp = cube[0][2][index];
             cube[0][2][index] = cube[4][index][0];
-            cube[4][index][0] = cube[5][0][2-index];
-            cube[5][0][2-index] = cube[2][2-index][2];
-            cube[2][2-index][2] = temp;
+            cube[4][index][0] = cube[5][0][2 - index];
+            cube[5][0][2 - index] = cube[2][2 - index][2];
+            cube[2][2 - index][2] = temp;
         }
     }
 

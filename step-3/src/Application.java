@@ -11,8 +11,8 @@ class Application extends Thread {
     public void run() {
         List<Command> commandList;
 
-        while(true) {
-            cube.printStatus();
+        cube.printStatus();
+        while (true) {
             commandList = ValueSeperator.getCommandList(InputView.inputValues());
             cube.rotate(commandList);
         }
