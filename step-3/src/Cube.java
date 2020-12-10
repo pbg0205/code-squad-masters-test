@@ -6,18 +6,24 @@ class Cube {
 
     private OperationCounter operationCounter;
     private Timer timer;
+    private FinishChecker finishChecker;
     private String[][][] cube;
 
     public Cube() {
         initCube();
         initCubeFaces();
         initOperationCounter();
+        initFinishChecker();
         initTimer();
         rotate(new RandomMixer().getRandomList());
     }
 
     private void initCube() {
         this.cube = new String[FACE_NUMBER][CUBE_SIZE][CUBE_SIZE];
+    }
+
+    private void initFinishChecker() {
+        this.finishChecker = new FinishChecker();
     }
 
     private void initTimer() {
@@ -33,6 +39,10 @@ class Cube {
 
     private void initOperationCounter() {
         this.operationCounter = new OperationCounter();
+    }
+
+    public String[][][] getCube() {
+        return cube;
     }
 
     private void initCubeFace(int faceNumber, CubeColor color) {
@@ -64,6 +74,9 @@ class Cube {
             rotateByCommand(command);
             operationCounter.addCount();
             printCommandAndStatus(command);
+            if(isFinished()){
+                printFinshedMessage();
+            }
         }
     }
 
@@ -370,5 +383,14 @@ class Cube {
                     " ", cube[faceNumber][row][0], cube[faceNumber][row][1], cube[faceNumber][row][2]);
         }
         System.out.println();
+    }
+
+    private boolean isFinished() {
+        return finishChecker.isFinished(getCube());
+    }
+
+    private void printFinshedMessage() {
+        System.out.println("\uD83E\uDD47큐브를 완성하셨습니다\uD83E\uDD47");
+        quit();
     }
 }
