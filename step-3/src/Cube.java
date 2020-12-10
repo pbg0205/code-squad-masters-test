@@ -5,16 +5,22 @@ class Cube {
     private static final int CUBE_SIZE = 3;
 
     private OperationCounter operationCounter;
+    private Timer timer;
     private String[][][] cube;
 
     public Cube() {
         initCube();
         initCubeFaces();
         initOperationCounter();
+        initTimer();
     }
 
     private void initCube() {
         this.cube = new String[FACE_NUMBER][CUBE_SIZE][CUBE_SIZE];
+    }
+
+    private void initTimer() {
+        this.timer = new Timer();
     }
 
     private void initCubeFaces() {
@@ -277,6 +283,7 @@ class Cube {
     }
 
     private void quit() {
+        timer.printFinishTime();
         operationCounter.printCount();
         System.out.println("이용해주셔서 감사합니다. 뚜뚜뚜.");
         System.exit(0);
