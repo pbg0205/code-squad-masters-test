@@ -13,6 +13,7 @@ class Cube {
         initCubeFaces();
         initOperationCounter();
         initTimer();
+        rotate(new RandomMixer().getRandomList());
     }
 
     private void initCube() {
@@ -46,12 +47,23 @@ class Cube {
         }
     }
 
-    public void rotate(List<Command> commandList) {
+    private void rotate(List<Command> commandList) {
         for (Command command : commandList) {
             if (command.isNull()) {
                 continue;
             }
             rotateByCommand(command);
+        }
+    }
+
+    public void rotateAndPrint(List<Command> commandList) {
+        for (Command command : commandList) {
+            if (command.isNull()) {
+                continue;
+            }
+            rotateByCommand(command);
+            operationCounter.addCount();
+            printCommandAndStatus(command);
         }
     }
 
@@ -61,7 +73,7 @@ class Cube {
                 rotateClockwise(0);
                 rotateUpperLeft();
                 break;
-            case UPPER_LEFT_X2: //TODO 구현하기
+            case UPPER_LEFT_X2:
                 rotateUpperLeft180();
                 break;
             case UPPER_RIGHT:
@@ -72,7 +84,7 @@ class Cube {
                 rotateClockwise(2);
                 rotateLeftBelow();
                 break;
-            case LEFT_BELOW_X2://TODO 구현하기
+            case LEFT_BELOW_X2:
                 rotateLeftBelow180();
                 break;
             case LEFT_UPPER:
@@ -83,7 +95,7 @@ class Cube {
                 rotateClockwise(3);
                 rotateFrontRight();
                 break;
-            case FRONT_RIGHT_X2://TODO 구현하기
+            case FRONT_RIGHT_X2:
                 rotateFrontRight180();
                 break;
             case FRONT_LEFT:
@@ -94,7 +106,7 @@ class Cube {
                 rotateClockwise(4);
                 rotateRightUpper();
                 break;
-            case RIGHT_UPPER_X2: //TODO 구현하기
+            case RIGHT_UPPER_X2:
                 rotateRightUpper180();
                 break;
             case RIGHT_BELOW:
@@ -105,7 +117,7 @@ class Cube {
                 rotateClockwise(1);
                 rotateBackLeft();
                 break;
-            case BACK_LEFT_X2: //TODO 구현하기
+            case BACK_LEFT_X2:
                 rotateBackLeft180();
                 break;
             case BACK_RIGHT:
@@ -116,7 +128,7 @@ class Cube {
                 rotateClockwise(5);
                 rotateDownRight();
                 break;
-            case DOWN_RIGHT_X2: //TODO 구현하기
+            case DOWN_RIGHT_X2:
                 rotateDownRight180();
                 break;
             case DOWN_LEFT:
@@ -127,8 +139,6 @@ class Cube {
                 quit();
                 break;
         }
-        operationCounter.addCount();
-        printCommandAndStatus(command);
     }
 
     private void rotateUpperLeft180() {

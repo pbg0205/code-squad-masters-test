@@ -14,7 +14,7 @@ class Application extends Thread {
         cube.printStatus();
         while (true) {
             commandList = ValueSeperator.getCommandList(InputView.inputValues());
-            cube.rotate(commandList);
+            cube.rotateAndPrint(commandList);
         }
     }
 }
