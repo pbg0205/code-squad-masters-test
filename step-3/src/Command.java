@@ -29,7 +29,7 @@ enum Command {
 
     public static Command of(String value) {
         for (Command command : Command.values()) {
-            if(command.getValue().equals(value)) {
+            if(command.getValue().equalsIgnoreCase(value)) {
                 return command;
             }
         }
