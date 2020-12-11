@@ -330,8 +330,8 @@ class Cube {
         for (int index = 0; index < CUBE_SIZE; index++) {
             temp = cube[0][0][2 - index];
             cube[0][0][2 - index] = cube[2][index][0];
-            cube[2][index][0] = cube[5][index][0];
-            cube[5][index][0] = cube[4][2 - index][2];
+            cube[2][index][0] = cube[5][2][index];
+            cube[5][2][index] = cube[4][2 - index][2];
             cube[4][2 - index][2] = temp;
         }
     }
@@ -339,22 +339,22 @@ class Cube {
     private void rotateDownRight() {
         String temp;
         for (int index = 0; index < CUBE_SIZE; index++) {
-            temp = cube[1][2][index];
-            cube[1][2][index] = cube[2][2][index];
-            cube[2][2][index] = cube[3][2][index];
-            cube[3][2][index] = cube[4][2][index];
-            cube[4][2][index] = temp;
+            temp = cube[4][2][index];
+            cube[4][2][index] = cube[3][2][index];
+            cube[3][2][index] = cube[2][2][index];
+            cube[2][2][index] = cube[1][2][index];
+            cube[1][2][index] = temp;
         }
     }
 
     private void rotateDownLeft() {
         String temp;
         for (int index = 0; index < CUBE_SIZE; index++) {
-            temp = cube[4][2][index];
-            cube[4][2][index] = cube[3][2][index];
-            cube[3][2][index] = cube[2][2][index];
-            cube[2][2][index] = cube[1][2][index];
-            cube[1][2][index] = temp;
+            temp = cube[1][2][index];
+            cube[1][2][index] = cube[2][2][index];
+            cube[2][2][index] = cube[3][2][index];
+            cube[3][2][index] = cube[4][2][index];
+            cube[4][2][index] = temp;
         }
     }
 
