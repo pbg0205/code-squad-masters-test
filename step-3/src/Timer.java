@@ -17,6 +17,6 @@ public class Timer {
     public void printFinishTime(){
         initEndTime();
         int elapsedSeconds = (int)((endTime - startTime) / 1000);
-        System.out.printf("경과 시간: %02d %02d\n", elapsedSeconds / 60, elapsedSeconds % 60);
+        System.out.printf("경과 시간: %02d:%02d\n", elapsedSeconds / 60, elapsedSeconds % 60);
     }
 }
