@@ -1,4 +1,4 @@
-class FinishChecker {
+class WinnerChecker {
     private static final int FACE_NUMBER = 6;
     private static final int CUBE_SIZE = 3;
     private String[][][] cube;

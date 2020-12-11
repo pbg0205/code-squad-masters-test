@@ -5,7 +5,7 @@ class Cube {
     private static final int CUBE_SIZE = 3;
 
     private OperationCounter operationCounter;
-    private FinishChecker finishChecker;
+    private WinnerChecker winnerChecker;
     private String[][][] cube;
 
     public Cube() {
@@ -17,7 +17,7 @@ class Cube {
     }
 
     private void initFinishChecker() {
-        finishChecker = new FinishChecker();
+        winnerChecker = new WinnerChecker();
     }
 
     private void initCube() {
@@ -69,7 +69,7 @@ class Cube {
             }
             exit = rotateByCommand(command);
 
-            if(finishChecker.isFinished(getCube())){
+            if(winnerChecker.isFinished(getCube())){
                 return true;
             }
 

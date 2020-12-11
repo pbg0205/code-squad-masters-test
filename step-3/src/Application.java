@@ -3,7 +3,7 @@ import java.util.List;
 class Application extends Thread {
     private Cube cube;
     private Timer timer;
-    private FinishChecker finishChecker;
+    private WinnerChecker winnerChecker;
 
     Application() {
         init();
@@ -11,7 +11,7 @@ class Application extends Thread {
 
     private void init() {
         this.cube = new Cube();
-        this.finishChecker = new FinishChecker();
+        this.winnerChecker = new WinnerChecker();
         this.timer = new Timer();
     }
 
@@ -30,7 +30,7 @@ class Application extends Thread {
     }
 
     public void quit() {
-        boolean isWinner = finishChecker.isFinished(cube.getCube());
+        boolean isWinner = winnerChecker.isFinished(cube.getCube());
         if (isWinner) {
             printFinshedMessage();
         }
