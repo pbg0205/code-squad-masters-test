@@ -39,7 +39,8 @@ class Application extends Thread {
     }
 
     private void printFinshedMessage() {
-        System.out.println("\uD83E\uDD47큐브를 완성하셨습니다\uD83E\uDD47");
+        cube.printStatus();
+        System.out.println("\n\uD83E\uDD47큐브를 완성하셨습니다\uD83E\uDD47");
     }
 
     private void printFinishMessage() {
