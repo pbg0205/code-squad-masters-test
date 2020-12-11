@@ -318,8 +318,8 @@ class Cube {
         String temp;
         for (int index = 0; index < CUBE_SIZE; index++) {
             temp = cube[4][2 - index][2];
-            cube[4][2][2] = cube[5][index][0];
-            cube[5][index][0] = cube[2][index][0];
+            cube[4][2 - index][2] = cube[5][2][index];
+            cube[5][2][index] = cube[2][index][0];
             cube[2][index][0] = cube[0][0][2 - index];
             cube[0][0][2 - index] = temp;
         }
