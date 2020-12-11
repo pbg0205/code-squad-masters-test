@@ -13,7 +13,7 @@ class Cube {
         initCubeFaces();
         initFinishChecker();
         initOperationCounter();
-        rotate(new RandomMixer().getRandomList());
+        initRotate(new RandomMixer().getRandomList());
     }
 
     private void initFinishChecker() {
@@ -51,7 +51,7 @@ class Cube {
         }
     }
 
-    private void rotate(List<Command> commandList) {
+    private void initRotate(List<Command> commandList) {
         for (Command command : commandList) {
             if (command.isNull()) {
                 continue;
@@ -60,7 +60,7 @@ class Cube {
         }
     }
 
-    public boolean rotateAndPrint(List<Command> commandList) {
+    public boolean rotate(List<Command> commandList) {
         boolean exit;
 
         for (Command command : commandList) {
@@ -69,7 +69,7 @@ class Cube {
             }
             exit = rotateByCommand(command);
 
-            if(winnerChecker.isFinished(getCube())){
+            if(winnerChecker.checkWinner(getCube())){
                 return true;
             }
 

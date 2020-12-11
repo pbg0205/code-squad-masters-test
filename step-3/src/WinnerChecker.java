@@ -7,7 +7,7 @@ class WinnerChecker {
         this.cube = cube;
     }
 
-    public boolean isFinished(String[][][] cube) {
+    public boolean checkWinner(String[][][] cube) {
         initCube(cube);
 
         for (int faceNumber = 0; faceNumber < FACE_NUMBER; faceNumber++) {

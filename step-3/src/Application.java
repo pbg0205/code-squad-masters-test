@@ -24,13 +24,13 @@ class Application extends Thread {
 
         while (!isFinished) {
             commandList = ValueSeperator.getCommandList(InputView.inputValues());
-            isFinished = cube.rotateAndPrint(commandList);
+            isFinished = cube.rotate(commandList);
         }
         quit();
     }
 
     public void quit() {
-        boolean isWinner = winnerChecker.isFinished(cube.getCube());
+        boolean isWinner = winnerChecker.checkWinner(cube.getCube());
         if (isWinner) {
             printFinshedMessage();
         }
