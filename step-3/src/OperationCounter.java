@@ -9,6 +9,10 @@ public class OperationCounter {
         this.count++;
     }
 
+    public int getCount() {
+        return count;
+    }
+
     public void printCount(){
         System.out.println("조작횟수: " + this.count);
     }

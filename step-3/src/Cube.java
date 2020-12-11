@@ -5,29 +5,23 @@ class Cube {
     private static final int CUBE_SIZE = 3;
 
     private OperationCounter operationCounter;
-    private Timer timer;
     private FinishChecker finishChecker;
     private String[][][] cube;
 
     public Cube() {
         initCube();
         initCubeFaces();
-        initOperationCounter();
         initFinishChecker();
-        initTimer();
+        initOperationCounter();
         rotate(new RandomMixer().getRandomList());
+    }
+
+    private void initFinishChecker() {
+        finishChecker = new FinishChecker();
     }
 
     private void initCube() {
         this.cube = new String[FACE_NUMBER][CUBE_SIZE][CUBE_SIZE];
-    }
-
-    private void initFinishChecker() {
-        this.finishChecker = new FinishChecker();
-    }
-
-    private void initTimer() {
-        this.timer = new Timer();
     }
 
     private void initCubeFaces() {
@@ -66,92 +60,103 @@ class Cube {
         }
     }
 
-    public void rotateAndPrint(List<Command> commandList) {
+    public boolean rotateAndPrint(List<Command> commandList) {
+        boolean exit;
+
         for (Command command : commandList) {
             if (command.isNull()) {
                 continue;
             }
-            rotateByCommand(command);
-            operationCounter.addCount();
-            printCommandAndStatus(command);
-            if(isFinished()){
-                printFinshedMessage();
+            exit = rotateByCommand(command);
+
+            if(finishChecker.isFinished(getCube())){
+                return true;
+            }
+
+            if(exit) {
+                return true;
+            }
+
+            if(!exit) {
+                operationCounter.addCount();
+                printCommandAndStatus(command);
             }
         }
+        return false;
     }
 
-    private void rotateByCommand(Command command) {
+    private boolean rotateByCommand(Command command) {
         switch (command) {
             case UPPER_LEFT:
                 rotateClockwise(0);
                 rotateUpperLeft();
-                break;
+                return false;
             case UPPER_LEFT_X2:
                 rotateUpperLeft180();
-                break;
+                return false;
             case UPPER_RIGHT:
                 rotateAnticlockwise(0);
                 rotateUpperRight();
-                break;
+                return false;
             case LEFT_BELOW:
                 rotateClockwise(2);
                 rotateLeftBelow();
-                break;
+                return false;
             case LEFT_BELOW_X2:
                 rotateLeftBelow180();
-                break;
+                return false;
             case LEFT_UPPER:
                 rotateAnticlockwise(2);
                 rotateLeftUpper();
-                break;
+                return false;
             case FRONT_RIGHT:
                 rotateClockwise(3);
                 rotateFrontRight();
-                break;
+                return false;
             case FRONT_RIGHT_X2:
                 rotateFrontRight180();
-                break;
+                return false;
             case FRONT_LEFT:
                 rotateAnticlockwise(3);
                 rotateFrontLeft();
-                break;
+                return false;
             case RIGHT_UPPER:
                 rotateClockwise(4);
                 rotateRightUpper();
-                break;
+                return false;
             case RIGHT_UPPER_X2:
                 rotateRightUpper180();
-                break;
+                return false;
             case RIGHT_BELOW:
                 rotateAnticlockwise(4);
                 rotateRightBelow();
-                break;
+                return false;
             case BACK_LEFT:
                 rotateClockwise(1);
                 rotateBackLeft();
-                break;
+                return false;
             case BACK_LEFT_X2:
                 rotateBackLeft180();
-                break;
+                return false;
             case BACK_RIGHT:
                 rotateAnticlockwise(1);
                 rotateBackRight();
-                break;
+                return false;
             case DOWN_RIGHT:
                 rotateClockwise(5);
                 rotateDownRight();
-                break;
+                return false;
             case DOWN_RIGHT_X2:
                 rotateDownRight180();
-                break;
+                return false;
             case DOWN_LEFT:
                 rotateAnticlockwise(5);
                 rotateDownLeft();
-                break;
+                return false;
             case QUIT:
-                quit();
-                break;
+                return true;
         }
+        return false;
     }
 
     private void rotateUpperLeft180() {
@@ -353,11 +358,8 @@ class Cube {
         }
     }
 
-    private void quit() {
-        timer.printFinishTime();
-        operationCounter.printCount();
-        System.out.println("이용해주셔서 감사합니다. 뚜뚜뚜.");
-        System.exit(0);
+    public int getCount() {
+        return operationCounter.getCount();
     }
 
     public void printStatus() {
@@ -383,14 +385,5 @@ class Cube {
                     " ", cube[faceNumber][row][0], cube[faceNumber][row][1], cube[faceNumber][row][2]);
         }
         System.out.println();
-    }
-
-    private boolean isFinished() {
-        return finishChecker.isFinished(getCube());
-    }
-
-    private void printFinshedMessage() {
-        System.out.println("\uD83E\uDD47큐브를 완성하셨습니다\uD83E\uDD47");
-        quit();
     }
 }
