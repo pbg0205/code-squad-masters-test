@@ -106,8 +106,8 @@ W W R       O O O       B G G       Y Y Y               W W B       O O O       
 ```
 [F 기능 구현]                                            [F' 기능 구현]                                          
 
-CUBE> F                                                 CUBE> F
-명령어 : F                                              명령어 : F
+CUBE> F                                                 CUBE> F'
+명령어 : F                                              명령어 : F'
                   B B B                                                   B B B
                   B B B                                                   B B B
                   O O O                                                   Y Y Y
@@ -164,9 +164,9 @@ CUBE> D                                                 CUBE> D'
                   B B B                                                   B B B
                   B B B                                                   B B B
 
-W W W       O O O       G G G       Y Y Y               W W W       O O O       G G G       Y Y Y
 W W W       O O O       G G G       Y Y Y               W W W       O O O       G G G       Y Y Y 
-Y Y Y       W W W       O O O       G G G               Y Y Y       W W W       O O O       G G G  
+W W W       O O O       G G G       Y Y Y               W W W       O O O       G G G       Y Y Y 
+Y Y Y       W W W       O O O       G G G               O O O       G G G       Y Y Y       W W W
 
                   R R R                                                   R R R
                   R R R                                                   R R R
@@ -220,7 +220,7 @@ Y Y Y       W W W       O O O       G G G               Y Y Y       W W W       
      우선 요구사항에 있는 각 면의 색을 입력하기 위해 CubeColor enum을 선언 후, 해당 색으로 초기화할 수 있도록 하였습니다.
     <br><br>
     
-    (2) cube 회전 로직 구현
+    (2) cube 회전 로직 구현   
      이번 미션의 핵심은 큐브의 전개도를 표현하는 방법이었습니다.
     큐브의 면에 따라서 움직이는 로직을 다르게 처리해주어야 하기 때문입니다. 그래서 우선적으로 큐브의 전개도와 각 면 주변의 4면의
      상태을 그려보았습니다.
@@ -374,9 +374,8 @@ Y Y Y       W W W       O O O       G G G               Y Y Y       W W W       
     해당 클래스를 구현 후, 회전이 완료됨을 처리하기 위해서 조작이 완료된 가장 마지막 위치에 addCount() method를 처리하였습니다.   
     <br><br>
     
-**<추가 기능 클래스>**   
+    ### <추가 기능 클래스>   
 3. Timer
-
     ```java
     public class Timer {
         private long startTime;
