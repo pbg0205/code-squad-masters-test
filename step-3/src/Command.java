@@ -29,10 +29,6 @@ enum Command {
         return value;
     }
 
-    public boolean isNull() {
-        return this == null;
-    }
-
     public static Command of(String value) {
         for (Command command : Command.values()) {
             if(command.getValue().equalsIgnoreCase(value)) {

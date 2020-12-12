@@ -53,7 +53,7 @@ class Cube {
 
     private void initRotate(List<Command> commandList) {
         for (Command command : commandList) {
-            if (command.isNull()) {
+            if (command == null) {
                 continue;
             }
             rotateByCommand(command);
@@ -64,7 +64,7 @@ class Cube {
         boolean exit;
 
         for (Command command : commandList) {
-            if (command.isNull()) {
+            if (command == null) {
                 continue;
             }
             exit = rotateByCommand(command);
