@@ -45,7 +45,7 @@ class Application extends Thread {
 
     private void printFinishMessage() {
         timer.printFinishTime();
-        System.out.println("경과시간: " + cube.getCount());
+        System.out.println("조작 횟수 : " + cube.getCount());
         System.out.println("이용해주셔서 감사합니다. 뚜뚜뚜.");
     }
 }
