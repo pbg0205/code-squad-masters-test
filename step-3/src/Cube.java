@@ -69,15 +69,15 @@ class Cube {
             }
             exit = rotateByCommand(command);
 
-            if(winnerChecker.checkWinner(getCube())){
+            if (winnerChecker.checkWinner(getCube())) {
                 return true;
             }
 
-            if(exit) {
+            if (exit) {
                 return true;
             }
 
-            if(!exit) {
+            if (!exit) {
                 operationCounter.addCount();
                 printCommandAndStatus(command);
             }
@@ -160,33 +160,46 @@ class Cube {
     }
 
     private void rotateUpperLeft180() {
-        rotateClockwise(0);
-        rotateUpperLeft();
+        for (int count = 0; count < 2; count++) {
+            rotateClockwise(0);
+            rotateUpperLeft();
+        }
     }
 
     private void rotateLeftBelow180() {
-        rotateClockwise(2);
-        rotateLeftBelow();
+        for (int count = 0; count < 2; count++) {
+            rotateClockwise(2);
+            rotateLeftBelow();
+        }
     }
 
     private void rotateFrontRight180() {
-        rotateClockwise(3);
-        rotateFrontRight();
+        for (int count = 0; count < 2; count++) {
+            rotateClockwise(3);
+            rotateFrontRight();
+
+        }
     }
 
     private void rotateRightUpper180() {
-        rotateClockwise(4);
-        rotateRightUpper();
+        for (int count = 0; count < 2; count++) {
+            rotateClockwise(4);
+            rotateRightUpper();
+        }
     }
 
     private void rotateBackLeft180() {
-        rotateClockwise(1);
-        rotateBackLeft();
+        for (int count = 0; count < 2; count++) {
+            rotateClockwise(1);
+            rotateBackLeft();
+        }
     }
 
     private void rotateDownRight180() {
-        rotateClockwise(5);
-        rotateDownRight();
+        for (int count = 0; count < 2; count++) {
+            rotateClockwise(5);
+            rotateDownRight();
+        }
     }
 
     private void printCommandAndStatus(Command command) {
